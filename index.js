@@ -153,4 +153,6 @@ router.post('/transaction-type-update/:id', (req,res) => {
   }}).then(resUpdate => res.redirect('/transactions-type'));
 });
  
+console.log(process.env.PORT);
+
 app.listen(process.env.PORT);
