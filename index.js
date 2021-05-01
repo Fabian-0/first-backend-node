@@ -21,7 +21,7 @@ router.get('/', (req,res) => {
   // Clients.findAll({raw:true}).then(responseFindAll => {
   //   res.render('index',{responseFindAll, active: 'clients'});
   // });
-  res.render('test');
+  res.render('tests');
 });
 
 router.get('/accounts', (req, res) => {
