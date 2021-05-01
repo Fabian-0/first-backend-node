@@ -18,7 +18,7 @@ router.get('/', (req,res) => {
   Clients.findAll({raw:true}).then(responseFindAll => {
     res.redirect('/test');
     // res.render('index',{responseFindAll, active: 'clients'});
-  });
+  }).catch(response => res.send(response));
   // res.render('tests');
 });
 
