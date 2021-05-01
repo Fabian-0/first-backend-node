@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const router = express.Router();
-// const {Clients, Accounts, transactions, account_types, transaction_types} = require('./models');
+const {Clients, Accounts, transactions, account_types, transaction_types} = require('./models');
 const PORT = process.env.PORT || 8080;
 // app.get('/', (req,res) => {
 //   res.send('tst')
@@ -18,10 +18,10 @@ app.use(router)
 // ----------    GETS     -----------
 
 router.get('/', (req,res) => {
-  // Clients.findAll({raw:true}).then(responseFindAll => {
-  //   res.render('index',{responseFindAll, active: 'clients'});
-  // });
-  res.render('tests');
+  Clients.findAll({raw:true}).then(responseFindAll => {
+    res.render('index',{responseFindAll, active: 'clients'});
+  });
+  // res.render('tests');
 });
 
 router.get('/accounts', (req, res) => {
