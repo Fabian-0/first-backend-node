@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 8080;
 
 // --------  Middlewears   ----------
 
-app.use(express.static('public'))
+// app.use(express.static('public'))
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 app.set('view engine', 'pug');
