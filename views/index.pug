@@ -1,0 +1,35 @@
+include includes/main.pug
+  h2 Add Clients 🤑
+  form(method="POST", action="/client-add")
+    div(class="mb-3")
+      label(for="exampleInputFirstName", class="form-label") Firts Name
+      input(type="text", class="form-control", id="exampleInputFirstName", aria-describedby="textlHelp", name="first_name")
+      label(for="exampleInputLastName", class="form-label") Last Name
+      input(type="text", class="form-control", id="exampleInputLastName", aria-describedby="textlHelp", name="last_name")
+      label(for="exampleInputEmail", class="form-label") Email
+      input(type="email", class="form-control", id="exampleInputEmail", aria-describedby="textlHelp", name="email")
+      label(for="exampleInputTelephone", class="form-label") Telephone Numbe
+      input(type="text", class="form-control", id="exampleInputTelephone", aria-describedby="textlHelp", name="telephone")
+    button(type="submit", class="btn btn-primary") Add
+  table(class="table")
+        thead
+          tr(class="text-center")
+            th(scope="col") #
+            th(scope="col") First Name
+            th(scope="col") Last Name
+            th(scope="col") Email
+            th(scope="col") Thelephone
+            th(scope="col") Options
+        tbody
+          each objectClient in responseFindAll
+            tr(id=`client-${objectClient.id}`)
+              th(scope="row")=  objectClient.id
+              td= objectClient.first_name
+              td= objectClient.last_name
+              td= objectClient.email 
+              td= objectClient.telephone
+              td 
+                div(class="container d-flex justify-content-around")
+                  button(class="btn btn-warning", onClick=(`clientUpdate(${objectClient.id})`)) Update
+                  a(class="btn btn-danger", href="/client-delete/"+objectClient.id) Delete
+include includes/footer.pug

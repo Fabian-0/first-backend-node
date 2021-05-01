@@ -1,0 +1,26 @@
+include includes/main.pug
+  h2 Add Transaction Type 🏧
+  form(method="POST", action="/transaction_type-add")
+    div(class="mb-3")
+      label(for="exampleInputFirstName", class="form-label") Name
+      input(type="text", class="form-control", id="exampleInputFirstName", aria-describedby="textlHelp", name="name") 
+      label(for="exampleInputLastName", class="form-label") Description
+      input(type="text", class="form-control", id="exampleInputLastName", aria-describedby="textlHelp", name="description")
+    button(type="submit", class="btn btn-primary") Add
+  table(class="table")
+        thead
+          tr(class="text-center")
+            th(scope="col") #
+            th(scope="col") Name
+            th(scope="col") Description
+            th(scope="col") Options
+        tbody
+          each objectClient in responseFindAll
+            tr(class="text-center", id=`transaction-type-${objectClient.id}`)
+              th(scope="row")=  objectClient.id
+              td= objectClient.name
+              td= objectClient.description
+              td 
+                div(class="container d-flex justify-content-around")
+                  button(class="btn btn-warning", onClick=`transactionTypeUpdate(${objectClient.id})`) Update
+include includes/footer.pug

@@ -1,0 +1,37 @@
+include includes/main.pug
+  h2 Add Transaction 🏧
+  form(method="POST", action="/transaction-add")
+    div(class="mb-3")
+      label(for="exampleInputFirstName", class="form-label") Origin Account
+      input(type="number", class="form-control", id="exampleInputFirstName", aria-describedby="textlHelp", name="account_ori") 
+      label(for="exampleInputLastName", class="form-label") Destination Account
+      input(type="number", class="form-control", id="exampleInputLastName", aria-describedby="textlHelp", name="account_des")
+      label(for="exampleInputEmail", class="form-label") Amount
+      input(type="number", class="form-control", id="exampleInputEmail", aria-describedby="textlHelp", name="amount")
+      label(for="exampleInputEmail", class="form-label") Transaction Type
+      input(type="number", class="form-control", id="exampleInputEmail", aria-describedby="textlHelp", name="transaction_type")
+    button(type="submit", class="btn btn-primary") Add
+  table(class="table")
+        thead
+          tr(class="text-center")
+            th(scope="col") #
+            th(scope="col") Origin Account
+            th(scope="col") Destination Account
+            th(scope="col") Amount
+            th(scope="col") Transaction Type
+            th(scope="col") Date
+            th(scope="col") Options
+        tbody
+          each objectClient in responseFindAll
+            tr(class="text-center", id=`transaction-${objectClient.id}`)
+              th(scope="row")=  objectClient.id
+              td= objectClient.account_ori
+              td= objectClient.account_des
+              td= objectClient.amount 
+              td= objectClient.transaction_type
+              td= objectClient.trans_date
+              td 
+                div(class="container d-flex justify-content-around")
+                  button(class="btn btn-warning", onClick=`transactionUpdate(${objectClient.id})`) Update
+                  a(class="btn btn-danger", href="/transaction-delete/"+objectClient.id) Delete 
+include includes/footer.pug

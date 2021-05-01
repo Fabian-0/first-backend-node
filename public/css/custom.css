@@ -1,0 +1,27 @@
+.bg-custom-primary {
+  background-color: #344258;
+}
+
+.bg-custom-secondary {
+  background-color: #F6F8FF;
+}
+
+.bg-custom-third {
+  border-bottom: 1px solid #4273FA;
+}
+
+.active {
+  color: #fff;
+}
+
+.overflow-custom {
+  overflow-x: scroll;
+}
+
+.container-custom {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
