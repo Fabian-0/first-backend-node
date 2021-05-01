@@ -3,9 +3,6 @@ const app = express();
 const router = express.Router();
 const {Clients, Accounts, transactions, account_types, transaction_types} = require('./models');
 const PORT = process.env.PORT || 8080;
-// app.get('/', (req,res) => {
-//   res.send('tst')
-// });
 
 // --------  Middlewears   ----------
 
@@ -19,7 +16,8 @@ app.use(router)
 
 router.get('/', (req,res) => {
   Clients.findAll({raw:true}).then(responseFindAll => {
-    res.render('index',{responseFindAll, active: 'clients'});
+    res.redirect('/test');
+    // res.render('index',{responseFindAll, active: 'clients'});
   });
   // res.render('tests');
 });
