@@ -4,7 +4,7 @@ const router = express.Router();
 // const {Clients, Accounts, transactions, account_types, transaction_types} = require('./models');
 const PORT = process.env.PORT || 8080;
 router.get('/', (req,res) => {
-  res.send('tst')
+  res.redirect('/tst')
 });
 /*
 // --------  Middlewears   ----------
