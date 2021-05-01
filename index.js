@@ -1,9 +1,12 @@
 const express = require('express');
 const app = express();
 const router = express.Router();
-const {Clients, Accounts, transactions, account_types, transaction_types} = require('./models');
+// const {Clients, Accounts, transactions, account_types, transaction_types} = require('./models');
 const PORT = process.env.PORT || 8080;
-
+router.get('/', (req,res) => {
+  res.send('tst')
+});
+/*
 // --------  Middlewears   ----------
 
 app.use(express.static('public'))
@@ -155,5 +158,5 @@ router.post('/transaction-type-update/:id', (req,res) => {
 });
  
 console.log(PORT);
-
+*/
 app.listen(PORT);
