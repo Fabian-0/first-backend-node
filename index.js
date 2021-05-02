@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 8080;
 
 // --------  Middlewears   ----------
 
-// app.use(express.static('public'))
+app.use(express.static('public'))
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 app.set('view engine', 'pug');
@@ -16,18 +16,16 @@ app.use(router)
 
 router.get('/', (req,res) => {
   Clients.findAll({raw:true}).then(responseFindAll => {
-    res.redirect('/test');
-    // res.render('index',{responseFindAll, active: 'clients'});
-  }).catch(response => res.send(response));
-  // res.render('tests');
+    res.render('index',{responseFindAll, active: 'clients'});
+  });
 });
 
 router.get('/accounts', (req, res) => {
-  // Accounts.findAll({raw:true}).then(responseFindAll => {
-  //   res.render('accounts',{responseFindAll, active: 'accounts'});
-  // });
+  Accounts.findAll({raw:true}).then(responseFindAll => {
+    res.render('accounts',{responseFindAll, active: 'accounts'});
+  });
 });
-/*
+
 router.get('/transactions', (req, res) => {
   transactions.findAll({raw:true, nest: true}).then(responseFindAll => {
     res.render('transactions',{responseFindAll, active: 'transactions'});
@@ -157,5 +155,5 @@ router.post('/transaction-type-update/:id', (req,res) => {
 });
  
 console.log(PORT);
-*/
+
 app.listen(PORT);
